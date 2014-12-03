@@ -1,0 +1,7 @@
+Fitting 3 folds for each of 24 candidates, totalling 72 fits
+Best score: 0.623
+Best parameters set:
+	clf__C: 10
+	vect__max_df: 0.25
+	vect__ngram_range: (1, 2)
+	vect__use_idf: False
