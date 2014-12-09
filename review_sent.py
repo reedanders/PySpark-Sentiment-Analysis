@@ -6,6 +6,8 @@ from sklearn.metrics.metrics import classification_report, accuracy_score, confu
 from sklearn.pipeline import Pipeline
 from sklearn.grid_search import GridSearchCV
 
+# Local classifier and csc-matrix vectorizer
+
 # The most common class, Neutral , includes more than 50 percent of the instances.
 # Accuracy will not be an informative performance measure for this problem, as a
 # degenerate classifier that predicts only Neutral can obtain an accuracy near 0.5.
