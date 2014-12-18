@@ -1,2 +1,5 @@
-train.tsv
-train.tsv.zip
+data/
+spark/
+emr-boot-script.sh
+review_sent-original.py
+spark_scikit_review_sent.py
