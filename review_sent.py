@@ -8,7 +8,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.grid_search import GridSearchCV
 from csv import DictReader, DictWriter
 
-# From 'Mastering Machine Learning with scikit-learn'
+# Local classifier and csc-matrix vectorizer
 
 # The most common class, Neutral , includes more than 50 percent of the instances.
 # Accuracy will not be an informative performance measure for this problem, as a
