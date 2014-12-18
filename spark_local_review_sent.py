@@ -5,6 +5,7 @@ from pyspark.mllib.util import MLUtils
 from pyspark import SparkContext, SparkConf
 from numpy import array
 
+# Exclude for AWS implementation
 conf = SparkConf()
 sc = SparkContext(conf=conf)
 
