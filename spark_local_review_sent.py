@@ -1,5 +1,6 @@
 # MLlibs
-from pyspark.mllib.classification import LogisticRegressionWithSGD
+# from pyspark.mllib.classification import SVMWithSGD
+from pyspark.mllib.tree import DecisionTree
 from pyspark.mllib.util import MLUtils
 from pyspark import SparkContext, SparkConf
 from numpy import array
@@ -8,21 +9,17 @@ conf = SparkConf()
 sc = SparkContext(conf=conf)
 
 # 0 128:51 129:159 130:253 131:159 [Label KEY:VALUE]
-training_data = MLUtils.loadLibSVMFile(sc, "sample_libsvm_data.txt")
+training_data = MLUtils.loadLibSVMFile(sc, "train_libsvm.txt")
 
-# # 231547 128:51 129:159 130:253 131:159 [PhraseId KEY:VALUE]
-# testing_data = MLUtils.loadLibSVMFile(sc, "sample_libsvm_data.txt")
+# 231547 128:51 129:159 130:253 131:159 [PhraseId KEY:VALUE]
+testing_data = MLUtils.loadLibSVMFile(sc, "test_libsvm.txt")
 
 # Build the model
-model = LogisticRegressionWithSGD.train(training_data)
+model = DecisionTree.trainClassifier(training_data, numClasses=5, categoricalFeaturesInfo={},
+                                     impurity='gini', maxDepth=5, maxBins=100)
 
-# Evaluating the model on training_data data
-labelsAndPreds = training_data.map(lambda p: (p.label, model.predict(p.features)))
-print training_data.count()
-
-# # Evaluating the model on testing_data data
-# labelsAndPreds = testing_data.map(lambda p: (p.label, model.predict(p.features)))
-# print testing_data.count()
+# Evaluating the model on testing_data data
+labelsAndPreds = testing_data.map(lambda p: (p.label, model.predict(p.features)))
 
 test = {}
 
