@@ -1,5 +1,6 @@
 data/
 spark/
+scikit/
 emr-boot-script.sh
 review_sent-original.py
 spark_scikit_review_sent.py
